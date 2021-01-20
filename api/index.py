@@ -8,11 +8,12 @@ def githubCI():
     headers = {"User-Agent":'curl/7.52.1',
               'Content-Type': 'application/json',
               'Accept': 'application/vnd.github.everest-preview+json',
-              'Authorization': 'token bf0142bc5c55a7ce2cce85ca34ae1a2d1100eb88'})
+              'Authorization': 'token d0d73ce3f20f8afc1595eeb4941a9a87b0a83995'})
     if r.status_code == 204:
         return "This's OK!"
     else:
         return r.status_code
+
 
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
