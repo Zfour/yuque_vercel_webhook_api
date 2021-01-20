@@ -2,7 +2,6 @@
 import requests
 import re
 from http.server import BaseHTTPRequestHandler
-import os
 
 def githubCI(token,user,source):
     requests_path = 'https://api.github.com/repos/' + user + '/' + source + '/dispatches'
@@ -20,9 +19,13 @@ def githubCI(token,user,source):
 
 class handler(BaseHTTPRequestHandler):
     def do_POST(self):
-        token = os.environ["GITHUB_TOKEN"]
-        user = os.environ["GITHUB_USER"]
-        source = os.environ["GTHUB_SOURCE"]
+        path = self.path
+        token_reg = re.compile(r'token="(.*?)"')
+        user_reg = re.compile(r'user="(.*?)"')
+        source_reg = re.compile(r'source="(.*?)"')
+        token = token_reg.findall(path)[0]
+        user = user_reg.findall(path)[0]
+        source = source_reg.findall(path)[0]
         text = githubCI(token,user,source)
         text = str(text)
         self.send_response(200)
