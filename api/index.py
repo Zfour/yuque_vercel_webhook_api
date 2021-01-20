@@ -17,9 +17,10 @@ def githubCI():
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
         text = githubCI()
+        text = str(text)
         self.send_response(200)
         self.send_header('Access-Control-Allow-Origin', '*')
-        self.send_header('Content-type', 'text/html')
+        self.send_header('Content-type', 'text/plain')
         self.end_headers()
-        self.wfile.write(text)
+        self.wfile.write(text.encode())
         return
