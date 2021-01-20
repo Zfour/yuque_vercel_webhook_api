@@ -19,7 +19,7 @@ def githubCI(token,user,source):
         return r.status_code
 
 class handler(BaseHTTPRequestHandler):
-    def do_GET(self):
+    def do_POST(self):
         token = os.environ["GITHUB_TOKEN"]
         user = os.environ["GITHUB_USER"]
         source = os.environ["GTHUB_SOURCE"]
