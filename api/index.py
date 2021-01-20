@@ -8,7 +8,7 @@ def githubCI():
     headers = {"User-Agent":'curl/7.52.1',
               'Content-Type': 'application/json',
               'Accept': 'application/vnd.github.everest-preview+json',
-              'Authorization': 'token a52e254940a1669f15b30a8e291303458a0f17f6'})
+              'Authorization': 'token 8f3962d75da03fc8caed22d768741e092ce3ac1f'})
     if r.status_code == 204:
         return "This's OK!"
     else:
