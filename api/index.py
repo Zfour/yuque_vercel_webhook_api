@@ -24,9 +24,9 @@ class handler(BaseHTTPRequestHandler):
         user_reg = re.compile(r'user="(.*?)"')
         source_reg = re.compile(r'source="(.*?)"')
         token = token_reg.findall(path)
-        user = user_reg.findall(path)
-        source = source_reg.findall(path)
-        text = githubCI(token,user,source)
+        user = user_reg.findall(path)[0]
+        source = source_reg.findall(path)[0]
+        text = githubCI(token,user,source)[0]
         text = str(text)
         self.send_response(200)
         self.send_header('Access-Control-Allow-Origin', '*')
