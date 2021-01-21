@@ -34,3 +34,19 @@ class handler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(text.encode())
         return
+    def do_GET(self):
+        path = self.path
+        token_reg = re.compile(r'token="(.*?)"')
+        user_reg = re.compile(r'user="(.*?)"')
+        source_reg = re.compile(r'source="(.*?)"')
+        token = token_reg.findall(path)[0]
+        user = user_reg.findall(path)[0]
+        source = source_reg.findall(path)[0]
+        text = githubCI(token,user,source)
+        text = str(text)
+        self.send_response(200)
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.send_header('Content-type', 'text/plain')
+        self.end_headers()
+        self.wfile.write(text.encode())
+        return
