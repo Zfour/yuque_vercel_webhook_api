@@ -5,7 +5,7 @@
 比较蛋疼的是，在仓库里填写 github 的私钥 github 会自动删除私钥。所以我试了好久都没成功。
 因此，我直接将 api 设置成了参数传递型的，供大家调用。
 api 地址：https://yuque-vercel-webhook-api.vercel.app/api?。
-当然你也可以fork 项目在 vercel 中自行搭建，将‘https://yuque-vercel-webhook-api.vercel.app’更换为你的 app 应用链接。
+当然你也可以fork 项目在 vercel 中自行搭建，将 ‘https://yuque-vercel-webhook-api.vercel.app’ 更换为你的 app 应用链接。
 你需要传递的参数有 token，user，source。
 
 ```
