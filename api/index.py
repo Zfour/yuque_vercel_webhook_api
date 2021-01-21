@@ -20,6 +20,7 @@ def githubCI(token,user,source):
 class handler(BaseHTTPRequestHandler):
     def do_POST(self):
         path = self.path
+        path= path.replace("'", '"')
         token_reg = re.compile(r'token="(.*?)"')
         user_reg = re.compile(r'user="(.*?)"')
         source_reg = re.compile(r'source="(.*?)"')
@@ -36,6 +37,7 @@ class handler(BaseHTTPRequestHandler):
         return
     def do_GET(self):
         path = self.path
+        path = path.replace("'", '"')
         token_reg = re.compile(r'token="(.*?)"')
         user_reg = re.compile(r'user="(.*?)"')
         source_reg = re.compile(r'source="(.*?)"')
